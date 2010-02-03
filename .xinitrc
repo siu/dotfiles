@@ -22,7 +22,7 @@
 #xcompmgr &
 #wicd-client &
 #xscreensaver -no-splash &
-(sleep 1; awsetbg ~/images/wallpapers/tiled1.png )&
+#(sleep 1; awsetbg $WALLPAPER )&
 #numlockx
 
 exec awesome

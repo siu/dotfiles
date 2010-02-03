@@ -13,9 +13,15 @@ require("vicious")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-theme.wallpaper_cmd = { "awsetbg /home/siu/images/wallpapers/tiled1.png" }
 
-terminal = "xterm -T xterm -e xtermtrick transxterm"
+-- This is used later as the default terminal and editor to run.
+terminal = "urxvtc"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
+--editor_cmd = editor
+wallpaper='/home/dsinuela/images/wallpapers/01707_spectrumofthesky_1280x1024.jpg'
+
+-- Other commands
 
 local commands = {}
 
@@ -26,24 +32,17 @@ commands.im = "pidgin"
 commands.lock = "xscreensaver-command -lock"
 
 commands.calc = "xcalc"
-commands.mute = "mute.sh"
-commands.raisevol = "amixer set Master 5%+"
-commands.lowervol = "amixer set Master 5%-"
+commands.mute = "amixer set Master toggle"
+commands.raisevol = "amixer set Master 4%+"
+commands.lowervol = "amixer set Master 4%-"
 commands.playpause = "mpc toggle"
-commands.player = "xterm -e ncmpcpp"
+commands.player = "sonata"
 commands.nexttrack = "mpc next"
 commands.prevtrack = "mpc prev"
 commands.playstop = "mpc stop"
 commands.screenshot = "scrot -e 'mv $f ~/screenshots'"
 commands.screenwin = "scrot -s -b -e 'mv $f ~/screenshots'"
-
--- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
-editor = os.getenv("EDITOR") or "gvim"
--- editor_cmd = terminal .. " -e " .. editor
-editor_cmd = editor
-
---theme.wallpaper_cmd = { "awsetbg /home/siu/images/wallpapers/tiled1.png" }
+commands.wallpaper = "(sleep 1; awsetbg " .. wallpaper .. ") &"
 
 autorun = true
 autorunApps = 
@@ -54,7 +53,6 @@ autorunApps =
 	{ "xscreensaver", "-no-splash"},
 	{ "numlockx", },
 	{ "conky", },
-	{ "awsetbg", "/home/siu/images/wallpapers/tiled1.png", },
 }
 function run_once(prg)
 	if not prg then
@@ -68,6 +66,7 @@ if autorun then
 	for app = 1, #autorunApps do
 		run_once(autorunApps[app])
 	end
+	os.execute(commands.wallpaper)
 end
 			
 
@@ -290,23 +289,23 @@ globalkeys = awful.util.table.join(
               end),
     -- Multimedia
     awful.key( {}, "XF86AudioMute",        
-    		function() awful.util.spawn( 'amixer -c 0 -q sset Master toggle' ) 
+    		function() awful.util.spawn( commands.mute ) 
 			showmastervolume()
 		end),
     awful.key( {}, "XF86AudioLowerVolume", 
     		function() 
-			awful.util.spawn( 'amixer -c 0 -q sset Master 4%-' )
+			awful.util.spawn( commands.lowervol )
 			showmastervolume()
 		end),
     awful.key( {}, "XF86AudioRaiseVolume", 
     		function() 
-			awful.util.spawn( 'amixer -c 0 -q sset Master 4%+' ) 
+			awful.util.spawn( commans.raisevol ) 
 			showmastervolume()
 		end),
-    awful.key( {}, "XF86AudioPlay", function() awful.util.spawn( 'exaile -t' ) end),
-    awful.key( {}, "XF86AudioPrev", function() awful.util.spawn( 'exaile -p' ) end),
-    awful.key( {}, "XF86AudioNext", function() awful.util.spawn( 'exaile -n' ) end),
-    awful.key( {}, "XF86AudioStop", function() awful.util.spawn( 'exaile -s' ) end),
+    awful.key( {}, "XF86AudioPlay", function() awful.util.spawn( commands.playpause ) end),
+    awful.key( {}, "XF86AudioPrev", function() awful.util.spawn( commands.prevtrack ) end),
+    awful.key( {}, "XF86AudioNext", function() awful.util.spawn( commands.nexttrack ) end),
+    awful.key( {}, "XF86AudioStop", function() awful.util.spawn( commands.playstop ) end),
     -- Apps
     awful.key( { modkey }, "b", function() awful.util.spawn( commands.browser ) end),
     awful.key( { modkey }, "p", function() awful.util.spawn( commands.fileman ) end),
@@ -315,7 +314,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "s", function () awful.util.spawn( commands.lock ) end),
     -- Keymaps
     awful.key( { modkey }, "e", function() awful.util.spawn( 'setxkbmap es' ) end),
-    awful.key( { modkey }, "n", function() awful.util.spawn( 'setxkbmap en' ) end)
+    awful.key( { modkey }, "n", function() awful.util.spawn( 'setxkbmap us' ) end)
 
 )
 
