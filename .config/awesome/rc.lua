@@ -19,7 +19,7 @@ terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 --editor_cmd = editor
-wallpaper='/home/dsinuela/images/wallpapers/01707_spectrumofthesky_1280x1024.jpg'
+wallpaper='/home/siu/images/wallpapers/tiled1.png'
 
 -- Other commands
 
@@ -224,7 +224,7 @@ root.buttons(awful.util.table.join(
 
 vol_notification_id = nil
 function showmastervolume()
-			local f = io.popen("amixer get Master | tail -1 | cut -d ' ' -f 6") -- runs command
+			local f = io.popen("amixer get Master | tail -1 | cut -d ' ' -f 6,8") -- runs command
 			local vol = f:read("*a") -- read output of command
 			print(l)
 			f:close()
@@ -299,7 +299,7 @@ globalkeys = awful.util.table.join(
 		end),
     awful.key( {}, "XF86AudioRaiseVolume", 
     		function() 
-			awful.util.spawn( commans.raisevol ) 
+			awful.util.spawn( commands.raisevol ) 
 			showmastervolume()
 		end),
     awful.key( {}, "XF86AudioPlay", function() awful.util.spawn( commands.playpause ) end),
