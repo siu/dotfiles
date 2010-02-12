@@ -1,6 +1,7 @@
 # Aliases
 alias ls='ls --color=auto'
 alias ll='ls -l'
+alias lt='ls -ltr'
 alias grep='grep --color=auto'
 alias git-export='git checkout-index -a -f --prefix '
 
