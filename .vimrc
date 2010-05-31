@@ -45,6 +45,8 @@ set tags=tags;~/
  
 " Change <Leader>
 " let mapleader = ","
+nore ; :
+nore , ;
  
 " Quick timeouts on key combinations.
 set timeoutlen=300
@@ -137,7 +139,6 @@ autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
  
 autocmd Filetype sh set ts=4 shiftwidth=2 expandtab
 autocmd Filetype lisp,ruby,xml,html set ts=8 shiftwidth=2 expandtab
-autocmd Filetype xml,xslt,diff,ruby color desert
 autocmd Filetype xml,xslt,diff,ruby set expandtab
 autocmd BufReadPre viper,.viper set filetype=lisp
  
@@ -164,9 +165,13 @@ if has('gui_running')
   set cursorline
   set guioptions-=m  " no menubar
   set guioptions-=T  " no toolbar
-  colorscheme desert
   set gfn=Terminus\ 10
 endif
 
-colorscheme desert
+colorscheme koehler
+
+" Fortran
+autocmd FileType fortran set expandtab
+autocmd FileType fortran set shiftwidth=2
+autocmd FileType fortran set softtabstop=2
 
