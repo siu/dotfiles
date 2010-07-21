@@ -25,6 +25,7 @@
 #(sleep 1; awsetbg $WALLPAPER )&
 #numlockx
 
+xset r rate 300 40
 exec awesome
 
 
