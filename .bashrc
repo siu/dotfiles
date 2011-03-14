@@ -7,8 +7,6 @@ alias git-export='git checkout-index -a -f --prefix '
 
 # ENV Variables
 export EDITOR=/usr/bin/vim
-export PATH=$PATH:/home/siu/.gem/ruby/1.8/bin
-#export PATH=$PATH:/home/siu/.gem/ruby/1.9.1/bin
 
 # PS1
 CW='\[\033[0;0m\]'
