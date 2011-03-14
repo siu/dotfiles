@@ -1,10 +1,3 @@
-# Aliases
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias lt='ls -ltr'
-alias grep='grep --color=auto'
-alias git-export='git checkout-index -a -f --prefix '
-
 # ENV Variables
 export EDITOR=/usr/bin/vim
 
@@ -14,4 +7,14 @@ C1='\[\033[0;31m\]'
 C2='\[\033[0;34m\]'
 C3='\[\033[0;33m\]'
 C4='\[\033[0;32m\]'
-PS1="${C1}(\D{%k:%M})${C2}\u${CW}@${C3}\h${CW} \w${CW} ${C4}\$ ${CW}"
+PS1="${C2}\u${CW}@${C1}\h${CW} \w${CW} ${C4}\$ ${CW}"
+
+# Aliases
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias lt='ls -ltr'
+alias grep='grep --color=auto'
+alias git-export='git checkout-index -a -f --prefix '
+
+# Play flash videos in mplayer, forum thread: https://bbs.archlinux.org/viewtopic.php?pid=901487
+alias fplayer="mplayer $(d=/proc/$(pidof plugin-container)/fd; ls --color=no  -l $d | gawk '/\/tmp\/Flash/ {print "'$d'/" $9}' )"
