@@ -31,7 +31,7 @@ commands.browser = "firefox"
 commands.im = "pidgin"
 commands.lock = "xscreensaver-command -lock"
 
-commands.calc = "xcalc"
+commands.calc = "hcg"
 commands.mute = "amixer set Master toggle"
 commands.raisevol = "amixer set Master 4%+"
 commands.lowervol = "amixer set Master 4%-"
@@ -42,17 +42,18 @@ commands.prevtrack = "mpc prev"
 commands.playstop = "mpc stop"
 commands.screenshot = "scrot -e 'mv $f ~/screenshots'"
 commands.screenwin = "scrot -s -b -e 'mv $f ~/screenshots'"
-commands.wallpaper = "(sleep 1; awsetbg " .. wallpaper .. ") &"
+commands.wallpaper = "(sleep 3; awsetbg -u feh " .. wallpaper .. ") &"
 
 autorun = true
 autorunApps = 
 {
 	{ "urxvtd", },
 	{ "wicd-client", },
-	{ "xcompmgr", },
+--	{ "xcompmgr", },
 	{ "xscreensaver", "-no-splash"},
 	{ "numlockx", },
 	{ "conky", },
+	{ "dropboxd", },
 }
 function run_once(prg)
 	if not prg then
@@ -306,6 +307,7 @@ globalkeys = awful.util.table.join(
     awful.key( {}, "XF86AudioPrev", function() awful.util.spawn( commands.prevtrack ) end),
     awful.key( {}, "XF86AudioNext", function() awful.util.spawn( commands.nexttrack ) end),
     awful.key( {}, "XF86AudioStop", function() awful.util.spawn( commands.playstop ) end),
+    awful.key( {}, "XF86Calculator", function() awful.util.spawn( commands.calc ) end),
     -- Apps
     awful.key( { modkey }, "b", function() awful.util.spawn( commands.browser ) end),
     awful.key( { modkey }, "p", function() awful.util.spawn( commands.fileman ) end),
