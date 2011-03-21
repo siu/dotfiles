@@ -44,7 +44,7 @@ set hidden
 set tags=tags;~/
  
 " Change <Leader>
-" let mapleader = ","
+let mapleader = ","
 nore ; :
 nore , ;
  
