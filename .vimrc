@@ -136,7 +136,8 @@ autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 "autocmd Filetype c,cpp,h set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " Viewglob
 "autocmd Filetype c,cpp,h,sh set cindent autoindent
- 
+autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
+autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
 autocmd Filetype sh set ts=4 shiftwidth=2 expandtab
 autocmd Filetype lisp,ruby,xml,html set ts=8 shiftwidth=2 expandtab
 autocmd Filetype xml,xslt,diff,ruby set expandtab
@@ -167,11 +168,4 @@ if has('gui_running')
   set guioptions-=T  " no toolbar
   set gfn=Terminus\ 10
 endif
-
-colorscheme koehler
-
-" Fortran
-autocmd FileType fortran set expandtab
-autocmd FileType fortran set shiftwidth=2
-autocmd FileType fortran set softtabstop=2
 
