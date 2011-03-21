@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 # ENV Variables
 export EDITOR=/usr/bin/vim
 
