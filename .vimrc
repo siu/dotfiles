@@ -10,6 +10,10 @@ set matchtime=0
 set shortmess=atI
 set ruler
 set showcmd
+
+" Status line
+set laststatus=2
+set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
  
 set sidescroll=1
 set sidescrolloff=3
