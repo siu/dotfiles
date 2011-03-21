@@ -17,4 +17,5 @@ alias grep='grep --color=auto'
 alias git-export='git checkout-index -a -f --prefix '
 
 # Play flash videos in mplayer, forum thread: https://bbs.archlinux.org/viewtopic.php?pid=901487
-alias fplayer="mplayer $(d=/proc/$(pidof plugin-container)/fd; ls --color=no  -l $d | gawk '/\/tmp\/Flash/ {print "'$d'/" $9}' )"
+alias fplayerf='mplayer $(d=/proc/$(pidof plugin-container)/fd; ls --color=no  -l $d | gawk '\''/\/tmp\/Flash/ {print "'\''$d'\''/" $8}'\'' )'
+alias fplayerc='mplayer $(d=/proc/$(pidof npviewer.bin)/fd; ls --color=no  -l $d | gawk '\''/\/tmp\/Flash/ {print "'\''$d'\''/" $8}'\'' )'
