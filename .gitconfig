@@ -1,5 +1,5 @@
 [user]
-	name = David Siñuela Pastor
+	name = David Siñuela Pastor\n
 	email = siu.4coders@gmail.com
 
 [color]
@@ -19,10 +19,14 @@
 	untracked = cyan
 
 [alias]
+	aa = add -A
 	st = status
 	ci = commit
 	br = branch
 	co = checkout
 	df = diff
+	dc = diff --cached
 	lg = log -p
+	amend = ci --amend
+	ll = log --pretty=oneline
 
