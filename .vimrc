@@ -100,39 +100,6 @@ set wildignore=*.o,*.so,*.d,*.a,*~,*.pyo,*.pyc
 set colorcolumn=+1
 set textwidth=80
 
-autocmd Filetype c,cc,cpp,h set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
-"autocmd Filetype c,cc,cpp,h,sh set cindent autoindent
-autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
-autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
-autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
-autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
-autocmd Filetype xml,xslt,diff,ruby set expandtab
-autocmd BufRead *.asciidoc set filetype=asciidoc
-
-" Keep ctags updated
-"au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
-
-" a.vim
-nmap <silent> <Leader>h :A<CR>
-
-set path+=.,**,./**,/usr/local/include,/usr/include
-set complete-=i
-
-" Whitespace management
-au BufWinEnter,WinEnter * match TabPreffix /^\t\+/
-au BufWinEnter,WinEnter * 2match WhiteSpaceEOL /\s\+$\| \+\t/
-highlight TabPreffix ctermbg=236 guibg=236
-highlight WhiteSpaceEOL ctermbg=cyan guibg=cyan
-highlight LineTooLong guibg=LightYellow
-nmap <c-F3> :call RmUselessSpaces()<CR>
-
-function! RmUselessSpaces()
-    " Trailing whitespace
-	:%s/\s\+$//e
-    " Leading whitespace
-	:%s/ \+\t/\t/ge
-endfunction
-
 " Gvim
 if has('gui_running')
   set t_Co=256
@@ -144,6 +111,44 @@ if has('gui_running')
 endif
 
 colorscheme wombat256mod
+
+" Whitespace management
+highlight TabPrefix ctermbg=236 guibg=236
+highlight WhiteSpaceEOL ctermbg=cyan guibg=cyan
+highlight LineTooLong guibg=LightYellow
+
+autocmd BufRead * syn match TabPrefix /^\t\+/
+autocmd BufRead * syn match WhiteSpaceEOL /\s\+$\| \+\t/
+
+nmap <c-F3> :call RmUselessSpaces()<CR>
+
+function! RmUselessSpaces()
+    " Trailing whitespace
+	:%s/\s\+$//e
+    " Leading whitespace
+	:%s/ \+\t/\t/ge
+endfunction
+
+
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+autocmd Filetype c,cc,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"autocmd Filetype c,cc,cpp,h,sh set cindent autoindent
+autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
+autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
+autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
+autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
+autocmd Filetype xml,xslt,diff,ruby set expandtab
+autocmd BufRead *.asciidoc set filetype=asciidoc
+
+" Keep ctags updated
+au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
+
+" a.vim
+nmap <silent> <Leader>h :A<CR>
+
+set path+=.,**,./**,/usr/local/include,/usr/include
+set complete-=i
 
 source ~/.vimrc.local
 
