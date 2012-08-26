@@ -46,6 +46,10 @@ set backspace=indent,eol,start
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
+" Persistent undo
+set undodir=~/.vim-undo/
+set undofile
+
 " Look for the file in the current directory, then south until you reach home.
 set tags=tags;~/
 
@@ -129,6 +133,9 @@ function! RmUselessSpaces()
 	:%s/ \+\t/\t/ge
 endfunction
 
+" Justify text paragraphs
+let @j='vipgq<CR>'
+nore <Leader>j @j
 
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
