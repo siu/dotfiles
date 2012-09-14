@@ -1,5 +1,7 @@
 set nocompatible
 
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 syntax on
 filetype on
 filetype plugin on
@@ -106,30 +108,29 @@ set textwidth=80
 
 " Gvim
 if has('gui_running')
-  set t_Co=256
-  set encoding=utf-8
-  set cursorline
-  set guioptions-=m  " no menubar
-  set guioptions-=T  " no toolbar
-  set gfn=Terminus\ 10
+	set t_Co=256
+	set encoding=utf-8
+	set cursorline
+	set guioptions-=m  " no menubar
+	set guioptions-=T  " no toolbar
+	set gfn=Terminus\ 10
 endif
 
 colorscheme wombat256mod
 
 " Whitespace management
-highlight TabPrefix ctermbg=236 guibg=236
-highlight WhiteSpaceEOL ctermbg=cyan guibg=cyan
-highlight LineTooLong guibg=LightYellow
+highlight ExtraTabs ctermbg=236 guibg=236
+highlight ExtraWhiteSpace ctermbg=red guibg=red
 
-autocmd BufRead * syn match TabPrefix /^\t\+/
-autocmd BufRead * syn match WhiteSpaceEOL /\s\+$\| \+\t/
+autocmd BufWinEnter * syntax match ExtraTabs /^\t\+/
+autocmd BufWinEnter * syntax match ExtraWhiteSpace /^ \+\t\+\|\s\+$/
 
 nmap <c-F3> :call RmUselessSpaces()<CR>
 
 function! RmUselessSpaces()
-    " Trailing whitespace
+	" Trailing whitespace
 	:%s/\s\+$//e
-    " Leading whitespace
+	" Leading whitespace
 	:%s/ \+\t/\t/ge
 endfunction
 
