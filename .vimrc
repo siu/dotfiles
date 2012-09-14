@@ -80,9 +80,8 @@ nmap <silent> <leader>s :set nolist!<CR>
 nmap H gT
 nmap L gt
 
-" Command-T
-nmap <C-t> :CommandT<CR>
-nmap <C-j> :CommandTBuffer<CR>
+" CtrlP
+nmap <C-t> :CtrlP<CR>
 
 " Toggle highlighting
 nmap <silent> <C-n> :silent :nohlsearch<CR>
