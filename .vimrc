@@ -93,6 +93,12 @@ nmap <C-l> $
 nore <C-e> 3<C-e>
 nore <C-y> 3<C-y>
 
+" Copy and paste from X clipboard
+nnoremap <C-y> "+y
+vnoremap <C-y> "+y
+nnoremap <C-p> "+gP
+vnoremap <C-p> "+gP
+
 " % matches on if/else, html tags, etc.
 runtime macros/matchit.vim
 
