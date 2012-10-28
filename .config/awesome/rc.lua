@@ -65,9 +65,10 @@ commands.playstop = "mpc stop"
 commands.screenshot = "scrot -e 'mv $f ~/screenshots'"
 commands.screenwin = "scrot -s -b -e 'mv $f ~/screenshots'"
 commands.wallpaper = "(sleep 1; awsetbg -u feh " .. wallpaper .. ") &"
+commands.padtoggle = "if [ $(($(synclient | grep TouchpadOff | cut -d '=' -f 2))) == 1 ]; then synclient TouchpadOff=0; else synclient TouchpadOff=1; fi"
 
 autorun = true
-autorunApps = 
+autorunApps =
 {
 	{ "urxvtd", },
 	{ "wicd-client", "--tray"},
@@ -92,7 +93,6 @@ if autorun then
 	end
 	os.execute(commands.wallpaper)
 end
-			
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -251,9 +251,16 @@ vol_notification_id = nil
 function showmastervolume()
 			local f = io.popen("amixer get Master | tail -1 | cut -d ' ' -f 6,8") -- runs command
 			local vol = f:read("*a") -- read output of command
-			print(l)
 			f:close()
 			vol_notification_id = naughty.notify({title = "Master Volume", text = vol, timeout = 3, replaces_id = vol_notification_id}).id
+end
+
+touch_notification_id = nil
+function showpadstatus()
+			local f = io.popen("if [ $(($(synclient | grep TouchpadOff | cut -d '=' -f 2))) == 1 ]; then echo 'disabled'; else echo 'enabled'; fi") -- runs command
+			local val = f:read("*a") -- read output of command
+			f:close()
+			touch_notification_id = naughty.notify({title = "Touchpad Status", text = val, timeout = 3, replaces_id = touch_notification_id}).id
 end
 
 -- {{{ Key bindings
@@ -315,19 +322,26 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Multimedia
-    awful.key( {}, "XF86AudioMute",        
-    		function() awful.util.spawn( commands.mute ) 
+    awful.key( {}, "XF86AudioMute",
+		function()
+			awful.util.spawn( commands.mute )
 			showmastervolume()
 		end),
-    awful.key( {}, "XF86AudioLowerVolume", 
-    		function() 
+    awful.key( {}, "XF86AudioLowerVolume",
+		function()
 			awful.util.spawn( commands.lowervol )
 			showmastervolume()
 		end),
-    awful.key( {}, "XF86AudioRaiseVolume", 
-    		function() 
-			awful.util.spawn( commands.raisevol ) 
+    awful.key( {}, "XF86AudioRaiseVolume",
+		function()
+			awful.util.spawn( commands.raisevol )
 			showmastervolume()
+		end),
+    -- Touchpad
+    awful.key( {modkey}, "p",
+		function()
+			os.execute( commands.padtoggle )
+			showpadstatus()
 		end),
     awful.key( {}, "XF86AudioPlay", function() awful.util.spawn( commands.playpause ) end),
     awful.key( {}, "XF86AudioPrev", function() awful.util.spawn( commands.prevtrack ) end),
