@@ -338,7 +338,7 @@ globalkeys = awful.util.table.join(
 			showmastervolume()
 		end),
     -- Touchpad
-    awful.key( {modkey}, "p",
+    awful.key( {modkey}, "t",
 		function()
 			os.execute( commands.padtoggle )
 			showpadstatus()
