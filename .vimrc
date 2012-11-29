@@ -1,6 +1,24 @@
 set nocompatible
+filetype off
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Rip-Rip/clang_complete'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'mileszs/ack.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'mikewest/vimroom'
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 syntax on
 filetype on
@@ -81,7 +99,7 @@ nmap H gT
 nmap L gt
 
 " CtrlP
-nmap <C-t> :CtrlP<CR>
+let g:ctrlp_map = '<c-t>'
 
 " Toggle highlighting
 nmap <silent> <C-n> :silent :nohlsearch<CR>
@@ -98,9 +116,6 @@ nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
-
-" % matches on if/else, html tags, etc.
-runtime macros/matchit.vim
 
 " Bash-like filename completion
 set wildmenu
@@ -153,9 +168,6 @@ autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
 autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
 autocmd Filetype xml,xslt,diff,ruby set expandtab
 autocmd BufRead *.asciidoc set filetype=asciidoc
-
-" Keep ctags updated
-au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
 
 " a.vim
 nmap <silent> <Leader>h :A<CR>
