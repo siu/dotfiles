@@ -14,6 +14,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'mikewest/vimroom'
+Bundle 'michalbachowski/vim-wombat256mod'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
