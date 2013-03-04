@@ -25,7 +25,7 @@
 #(sleep 1; awsetbg $WALLPAPER )&
 #numlockx
 
-xset r rate 300 40
+~/.bash_utils/swapkb us
 exec awesome
 
 
