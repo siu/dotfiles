@@ -9,12 +9,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'mileszs/ack.vim'
-Bundle 'msanders/snipmate.vim'
 Bundle 'mikewest/vimroom'
+Bundle 'msanders/snipmate.vim'
 Bundle 'michalbachowski/vim-wombat256mod'
+Bundle 'vim-scripts/a.vim'
+Bundle 'vim-scripts/lh-vim-lib'
+Bundle 'vim-scripts/local_vimrc.vim'
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -95,12 +97,9 @@ inoremap jk <ESC>
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
-" Buffer management
+" Tab management
 nmap H gT
 nmap L gt
-
-" CtrlP
-let g:ctrlp_map = '<c-t>'
 
 " Toggle highlighting
 nmap <silent> <C-n> :silent :nohlsearch<CR>
@@ -171,7 +170,7 @@ autocmd Filetype xml,xslt,diff,ruby set expandtab
 autocmd BufRead *.asciidoc set filetype=asciidoc
 
 " a.vim
-nmap <silent> <Leader>h :A<CR>
+nmap <silent> <Leader>a :A<CR>
 
 set path+=.,**,./**,/usr/local/include,/usr/include
 set complete-=i
