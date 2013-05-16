@@ -19,9 +19,9 @@ Bundle 'vim-scripts/lh-vim-lib'
 Bundle 'vim-scripts/local_vimrc.vim'
 
 au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au BufEnter * RainbowParenthesesLoadRound
+au BufEnter * RainbowParenthesesLoadSquare
+au BufEnter * RainbowParenthesesLoadBraces
 
 syntax on
 filetype on
