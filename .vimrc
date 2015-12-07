@@ -3,45 +3,26 @@ filetype off
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'gmarik/Vundle.vim'
 " Per project .lvimrc
 Plugin 'embear/vim-localvimrc'
-
 Plugin 'msanders/snipmate.vim'
-"Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/ag.vim'
 Plugin 'vim-scripts/lh-vim-lib'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-
 Plugin 'kien/ctrlp.vim'
-
 Plugin 'vim-scripts/vim-auto-save'
-
 Plugin 'godlygeek/tabular'
-"Plugin 'majutsushi/tagbar'
-"Plugin 'Chiel92/vim-autoformat'
 Plugin 'plasticboy/vim-markdown'
-
 Plugin 'michalbachowski/vim-wombat256mod'
-
 Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/rainbow_parentheses.vim'
-
 Plugin 'Valloric/ListToggle'
-
 Plugin 'rhysd/vim-clang-format'
-
 call vundle#end()
-
-au VimEnter * RainbowParenthesesToggle
-au BufEnter * RainbowParenthesesLoadRound
-au BufEnter * RainbowParenthesesLoadSquare
-au BufEnter * RainbowParenthesesLoadBraces
 
 syntax on
 "filetype on
@@ -109,25 +90,17 @@ nore , ;
 " Quick timeouts on key combinations.
 set timeoutlen=300
 
-" Alternatives to ESC:
-inoremap jk <ESC>
-"imap jlk <ESC>
-"imap kjl <ESC>
-"imap klj <ESC>
-"imap lkj <ESC>
-"imap ljk <ESC>
-"imap ;l <ESC>
-
 " Catch trailing whitespace
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 " Tab management
+" Previous tab
 nmap H gT
+" Next tab
 nmap L gt
 
 " Toggle highlighting
-nmap <silent> <C-n> :silent :nohlsearch<CR>
 nmap <silent> <leader>d :silent :nohlsearch<CR>
 
 " End and beginning of line
@@ -167,13 +140,13 @@ endif
 
 colorscheme wombat256mod
 
-" Whitespace management
+" Highlight whitespace
 highlight ExtraTabs ctermbg=236 guibg=236
 highlight ExtraWhiteSpace ctermbg=red guibg=red
-
 autocmd BufWinEnter * syntax match ExtraTabs /^\t\+/
 autocmd BufWinEnter * syntax match ExtraWhiteSpace /^ \+\t\+\|\s\+$/
 
+" Remove useles whitespace
 nmap <c-F3> :call RmUselessSpaces()<CR>
 
 function! RmUselessSpaces()
@@ -187,16 +160,8 @@ endfunction
 let @j='vipgq<CR>'
 nore <Leader>j @j
 
+" Global tab/space configuration
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-
-"autocmd Filetype c,cc,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-"autocmd Filetype c,cc,cpp,h,sh set cindent autoindent
-"autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
-"autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
-"autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
-"autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
-"autocmd Filetype xml,xslt,diff,ruby set expandtab
-"autocmd BufRead *.asciidoc set filetype=asciidoc
 
 " a.vim
 nmap <silent> <Leader>a :A<CR>
@@ -207,5 +172,12 @@ set complete-=i
 " localvimrc
 let g:localvimrc_persistent=1
 
+" Rainbow parentheses
+au VimEnter * RainbowParenthesesToggle
+au BufEnter * RainbowParenthesesLoadRound
+au BufEnter * RainbowParenthesesLoadSquare
+au BufEnter * RainbowParenthesesLoadBraces
+
+" Load local configuration
 source ~/.vimrc.local
 
