@@ -1,22 +1,42 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
-Bundle 'mileszs/ack.vim'
-Bundle 'mikewest/vimroom'
-Bundle 'msanders/snipmate.vim'
-Bundle 'michalbachowski/vim-wombat256mod'
-Bundle 'vim-scripts/a.vim'
-Bundle 'vim-scripts/lh-vim-lib'
-Bundle 'vim-scripts/local_vimrc.vim'
+Plugin 'gmarik/Vundle.vim'
+" Per project .lvimrc
+Plugin 'embear/vim-localvimrc'
+
+Plugin 'msanders/snipmate.vim'
+"Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/ag.vim'
+Plugin 'vim-scripts/lh-vim-lib'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'kien/ctrlp.vim'
+
+Plugin 'vim-scripts/vim-auto-save'
+
+Plugin 'godlygeek/tabular'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'Chiel92/vim-autoformat'
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'michalbachowski/vim-wombat256mod'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/rainbow_parentheses.vim'
+
+Plugin 'Valloric/ListToggle'
+
+Plugin 'rhysd/vim-clang-format'
+
+call vundle#end()
 
 au VimEnter * RainbowParenthesesToggle
 au BufEnter * RainbowParenthesesLoadRound
@@ -24,9 +44,12 @@ au BufEnter * RainbowParenthesesLoadSquare
 au BufEnter * RainbowParenthesesLoadBraces
 
 syntax on
-filetype on
+"filetype on
 filetype plugin on
 filetype indent on
+
+" Doxygen syntax
+let g:load_doxygen_syntax=1
 
 set history=1000
 set showmatch
@@ -34,6 +57,7 @@ set matchtime=0
 set shortmess=atI
 set ruler
 set number
+set showcmd
 
 " Allow switching edited buffers without saving
 set hidden
@@ -57,6 +81,7 @@ set smartcase
 set ttyfast
 set visualbell
 set noerrorbells
+set mouse=a
 set printoptions=paper:A4
 
 " Keep more lines of context
@@ -103,9 +128,13 @@ nmap L gt
 
 " Toggle highlighting
 nmap <silent> <C-n> :silent :nohlsearch<CR>
+nmap <silent> <leader>d :silent :nohlsearch<CR>
 
+" End and beginning of line
 nmap <C-h> ^
 nmap <C-l> $
+vmap <C-h> ^
+vmap <C-l> $
 
 " Scroll faster
 nore <C-e> 3<C-e>
@@ -160,20 +189,23 @@ nore <Leader>j @j
 
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-autocmd Filetype c,cc,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+"autocmd Filetype c,cc,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 "autocmd Filetype c,cc,cpp,h,sh set cindent autoindent
-autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
-autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
-autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
-autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
-autocmd Filetype xml,xslt,diff,ruby set expandtab
-autocmd BufRead *.asciidoc set filetype=asciidoc
+"autocmd Filetype py,python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 smarttab expandtab
+"autocmd FileType fortran set expandtab shiftwidth=2 softtabstop=2
+"autocmd Filetype sh set ts=4 shiftwidth=4 expandtab
+"autocmd Filetype lisp,ruby,xml,html set ts=2 shiftwidth=2 expandtab
+"autocmd Filetype xml,xslt,diff,ruby set expandtab
+"autocmd BufRead *.asciidoc set filetype=asciidoc
 
 " a.vim
 nmap <silent> <Leader>a :A<CR>
 
 set path+=.,**,./**,/usr/local/include,/usr/include
 set complete-=i
+
+" localvimrc
+let g:localvimrc_persistent=1
 
 source ~/.vimrc.local
 
