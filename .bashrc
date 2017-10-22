@@ -21,15 +21,8 @@ alias ga='git add '
 alias gau='git add -u :/'
 alias gci='git commit -v'
 
-alias restore_flash='~/.bash_utils/restore_flash.sh'
-
 # PS1
-CW='\[\033[0;0m\]'
-C1='\[\033[0;31m\]'
-C2='\[\033[0;34m\]'
-C3='\[\033[0;33m\]'
-C4='\[\033[0;32m\]'
-MYPS1="${C2}\u${CW}@${C1}\h${CW} \w${CW} ${C4}\\\$ ${CW}"
+MYPS1="\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] "
 PS1=$MYPS1
 
 function _git_prompt() {
@@ -59,7 +52,9 @@ function _prompt_command() {
 PROMPT_COMMAND=_prompt_command
 
 # Local configuration
-source ~/.bashrc.local
+if [ -e ~/.bashrc.local ]; then
+  source ~/.bashrc.local
+fi
 
 # StartX if first tty
 if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
