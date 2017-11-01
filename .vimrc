@@ -140,7 +140,7 @@ endif
 colorscheme wombat256mod
 
 " Highlight whitespace
-highlight ExtraTabs ctermbg=236 guibg=236
+highlight ExtraTabs ctermbg=red guibg=red
 highlight ExtraWhiteSpace ctermbg=red guibg=red
 autocmd BufWinEnter * syntax match ExtraTabs /^\t\+/
 autocmd BufWinEnter * syntax match ExtraWhiteSpace /^ \+\t\+\|\s\+$/
