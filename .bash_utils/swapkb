@@ -1,3 +1,0 @@
-setxkbmap $1
-xset r rate 300 40
-xmodmap ~/.swapcaps
