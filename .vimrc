@@ -106,13 +106,14 @@ set scrolloff=3
 " Make backspace delete lots of things
 set backspace=indent,eol,start
 
-" Auto-backup files and .swp files don't go to pwd
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" Auto-backup, swap and undo files don't go to pwd
+set backupdir=~/.vim/.backup//,/tmp//
+set directory=~/.vim/.swp//,/tmp//
+set undodir=~/.vim/.undo//,/tmp//
 
-" Persistent undo
-set undodir=~/.vim-undo/
+" Persistent undo and backup
 set undofile
+set backup
 
 " Look for the file in the current directory, then south until you reach home.
 set tags=tags;~/
