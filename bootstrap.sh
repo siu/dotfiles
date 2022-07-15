@@ -5,7 +5,9 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
-  rsync --exclude ".git/" \
+  rsync --backup \
+    --backup-dir /tmp/dotfiles-backup \
+    --exclude ".git/" \
     --exclude "bootstrap.sh" \
     --exclude "README.md" \
     -avh --no-perms . ~;
