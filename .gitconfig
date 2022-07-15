@@ -29,4 +29,5 @@
 	lg = log -p
 	amend = ci --amend
 	ll = log --pretty=oneline
+	topd = rev-parse --show-toplevel
 
