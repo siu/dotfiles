@@ -2,8 +2,6 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
-
 function doIt() {
   rsync --backup \
     --backup-dir /tmp/dotfiles-backup \
