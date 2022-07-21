@@ -240,5 +240,8 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_variable_declarations = 1
 
 " Load local configuration
-source ~/.vimrc.local
+let localvimrc = "~/.vimrc.local"
+if !empty(expand(glob(localvimrc)))
+	source localvimrc
+endif
 
