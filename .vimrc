@@ -8,7 +8,6 @@ Plug 'embear/vim-localvimrc'
 Plug 'msanders/snipmate.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/ag.vim'
-Plug 'vim-scripts/lh-vim-lib'
 Plug 'tpope/vim-surround'
 Plug 'luochen1990/rainbow'
 Plug 'Valloric/ListToggle'
@@ -31,7 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Debugging
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 
 " Git
 Plug 'tpope/vim-fugitive'
